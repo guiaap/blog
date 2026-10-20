@@ -29,16 +29,17 @@ EXECUTE FUNCTION update_updated_at();
 
 ---------------------------------------
 
--- POST padrão
+-- POSTs padrões
 INSERT INTO posts (title, description, author, body)
-VALUES (
+VALUES
+(
     'Introdução ao PostgreSQL',
-    'O PostgreSQL é um poderoso sistema gerenciador de banco de dados relacional, conhecido por sua confiabilidade, extensibilidade e conformidade com padrões SQL.',
+    'Conheça o PostgreSQL, um sistema gerenciador de banco de dados relacional de código aberto, reconhecido por sua confiabilidade, flexibilidade e recursos avançados.',
     'Guilherme Pedroso',
     '[
         {
             "type": "lead-paragraph",
-            "content": "O PostgreSQL é um poderoso sistema gerenciador de banco de dados relacional, conhecido por sua confiabilidade, extensibilidade e conformidade com padrões SQL."
+            "content": "Conheça o PostgreSQL, um sistema gerenciador de banco de dados relacional de código aberto, reconhecido por sua confiabilidade, flexibilidade e recursos avançados."
         },
         {
             "type": "divider",
@@ -46,60 +47,45 @@ VALUES (
         },
         {
             "type": "subtitle",
-            "content": "1. O que é PostgreSQL?"
+            "content": "O que é PostgreSQL?"
         },
         {
             "type": "paragraph",
-            "content": "O PostgreSQL é um sistema gerenciador de banco de dados objeto-relacional de código aberto. Ele permite armazenar, consultar e manipular dados utilizando SQL, além de oferecer recursos avançados para aplicações modernas."
+            "content": "O PostgreSQL é um banco de dados objeto-relacional que permite armazenar, consultar e manipular informações utilizando SQL. Ele oferece recursos como transações, integridade referencial, extensões e suporte a documentos JSON."
         },
         {
             "type": "image",
             "content": {
                 "url": "https://www.postgresql.org/media/img/about/press/elephant.png",
-                "alt": "Elefante, símbolo visual do PostgreSQL",
+                "alt": "Símbolo visual do PostgreSQL",
                 "caption": "O elefante é o símbolo tradicional do PostgreSQL."
             }
         },
         {
             "type": "subtitle",
-            "content": "2. Principais características"
+            "content": "Principais vantagens"
         },
         {
             "type": "paragraph",
-            "content": "Entre os recursos oferecidos pelo PostgreSQL, podemos destacar:"
+            "content": "O PostgreSQL oferece recursos que o tornam adequado para aplicações de diferentes tamanhos e complexidades."
         },
         {
             "type": "list",
             "content": {
                 "ordered": false,
                 "items": [
-                    "Suporte a transações e propriedades ACID.",
-                    "Integridade referencial por meio de chaves estrangeiras.",
-                    "Armazenamento de documentos JSON e JSONB.",
-                    "Suporte a índices e consultas complexas.",
-                    "Extensibilidade por meio de funções e extensões."
+                    "É um software de código aberto.",
+                    "Oferece suporte a transações e propriedades ACID.",
+                    "Permite armazenar e consultar dados JSONB.",
+                    "Possui mecanismos de controle de acesso e permissões.",
+                    "Suporta índices e consultas complexas."
                 ]
-            }
-        },
-        {
-            "type": "subtitle",
-            "content": "3. Exemplo de consulta SQL"
-        },
-        {
-            "type": "paragraph",
-            "content": "Podemos utilizar uma consulta SELECT para recuperar os artigos armazenados na tabela posts."
-        },
-        {
-            "type": "code",
-            "content": {
-                "language": "sql",
-                "code": "SELECT id, title, created_at FROM posts ORDER BY created_at DESC;"
             }
         },
         {
             "type": "quote",
             "content": {
-                "text": "Um bom banco de dados deve oferecer confiabilidade, consistência e flexibilidade para atender às necessidades da aplicação.",
+                "text": "A escolha de um banco de dados deve considerar os requisitos da aplicação, a consistência dos dados e as necessidades de manutenção.",
                 "author": "Equipe de desenvolvimento"
             }
         },
@@ -107,40 +93,204 @@ VALUES (
             "type": "tip",
             "content": {
                 "title": "Dica",
-                "text": "Utilize JSONB quando precisar armazenar documentos JSON com suporte a operadores e indexação do PostgreSQL."
+                "text": "Antes de criar índices, analise as consultas mais frequentes da aplicação e utilize EXPLAIN para entender como o PostgreSQL executa cada consulta."
             }
         },
         {
             "type": "warning",
             "content": {
                 "title": "Atenção",
-                "text": "Embora JSONB seja flexível, valide a estrutura dos dados na aplicação. O tipo JSONB, por si só, não garante que cada bloco tenha as propriedades esperadas."
+                "text": "Utilizar um banco de dados confiável não elimina a necessidade de backups periódicos e testes de restauração."
+            }
+        },
+        {
+            "type": "divider",
+            "content": null
+        },
+        {
+            "type": "paragraph",
+            "content": "O PostgreSQL é uma opção versátil para projetos que precisam de confiabilidade, recursos avançados e flexibilidade no armazenamento de dados."
+        }
+    ]'::jsonb
+),
+(
+    'Fundamentos do JavaScript',
+    'JavaScript é uma linguagem de programação amplamente utilizada no desenvolvimento web, permitindo criar interfaces interativas e aplicações que executam tanto no navegador quanto no servidor.',
+    'Guilherme Pedroso',
+    '[
+        {
+            "type": "lead-paragraph",
+            "content": "JavaScript é uma linguagem de programação amplamente utilizada no desenvolvimento web, permitindo criar interfaces interativas e aplicações que executam tanto no navegador quanto no servidor."
+        },
+        {
+            "type": "subtitle",
+            "content": "O que é JavaScript?"
+        },
+        {
+            "type": "paragraph",
+            "content": "JavaScript é uma linguagem de programação multiparadigma, com suporte a programação orientada a objetos, funcional e imperativa. No navegador, ela permite manipular elementos HTML, responder a eventos e atualizar o conteúdo das páginas."
+        },
+        {
+            "type": "image",
+            "content": {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+                "alt": "Logotipo do JavaScript",
+                "caption": "O JavaScript é uma das principais tecnologias utilizadas no desenvolvimento web."
             }
         },
         {
             "type": "subtitle",
-            "content": "4. Consultando dados JSONB"
+            "content": "Onde a linguagem pode ser utilizada?"
         },
         {
             "type": "paragraph",
-            "content": "Como o conteúdo do artigo está armazenado em JSONB, podemos consultar os blocos diretamente no PostgreSQL. Por exemplo, a consulta abaixo recupera o conteúdo completo do primeiro bloco."
-        },
-        {
-            "type": "code",
-            "content": {
-                "language": "sql",
-                "code": "SELECT body -> 0 AS primeiro_bloco FROM posts WHERE title = ''Introdução ao PostgreSQL'';"
-            }
+            "content": "Com o ecossistema JavaScript, é possível desenvolver diferentes partes de uma aplicação utilizando a mesma linguagem."
         },
         {
             "type": "list",
             "content": {
                 "ordered": true,
                 "items": [
-                    "O banco de dados armazena o conteúdo do artigo.",
-                    "A aplicação Node.js recupera os dados por meio de uma consulta SQL.",
-                    "O React percorre o array de blocos.",
-                    "Cada componente renderiza o conteúdo correspondente ao seu tipo."
+                    "Desenvolver interfaces interativas para páginas web.",
+                    "Criar APIs e servidores com Node.js.",
+                    "Construir aplicações com bibliotecas como React.",
+                    "Implementar validações e regras de negócio.",
+                    "Automatizar tarefas de desenvolvimento."
+                ]
+            }
+        },
+        {
+            "type": "quote",
+            "content": {
+                "text": "Aprender uma linguagem de programação envolve compreender seus conceitos e praticar a resolução de problemas.",
+                "author": "Equipe de desenvolvimento"
+            }
+        },
+        {
+            "type": "tip",
+            "content": {
+                "title": "Dica para iniciantes",
+                "text": "Pratique variáveis, funções, arrays e objetos antes de avançar para bibliotecas e frameworks. Esses fundamentos aparecem constantemente em projetos reais."
+            }
+        },
+        {
+            "type": "warning",
+            "content": {
+                "title": "Atenção",
+                "text": "Não confie exclusivamente nas validações executadas no navegador. Dados recebidos pelo servidor também precisam ser validados."
+            }
+        },
+        {
+            "type": "divider",
+            "content": null
+        },
+        {
+            "type": "subtitle",
+            "content": "Conclusão"
+        },
+        {
+            "type": "paragraph",
+            "content": "O JavaScript oferece uma base sólida para quem deseja trabalhar com desenvolvimento web. Com prática e domínio dos fundamentos, fica mais fácil aprender ferramentas como React e Express."
+        }
+    ]'::jsonb
+),
+(
+    'Boas práticas para desenvolver APIs REST',
+    'Desenvolver uma API REST vai além de criar rotas e retornar dados. Uma boa API precisa oferecer consistência, validação, segurança e respostas previsíveis para seus consumidores.',
+    'Guilherme Pedroso',
+    '[
+        {
+            "type": "lead-paragraph",
+            "content": "Desenvolver uma API REST vai além de criar rotas e retornar dados. Uma boa API precisa oferecer consistência, validação, segurança e respostas previsíveis para seus consumidores."
+        },
+        {
+            "type": "divider",
+            "content": null
+        },
+        {
+            "type": "subtitle",
+            "content": "Organize os recursos"
+        },
+        {
+            "type": "paragraph",
+            "content": "Uma API REST normalmente representa seus recursos por meio de URLs e utiliza métodos HTTP para indicar as operações desejadas. Por exemplo, um recurso chamado posts pode ser acessado por meio de uma rota como /posts."
+        },
+        {
+            "type": "image",
+            "content": {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
+                "alt": "Logotipo do Express.js",
+                "caption": "Express.js é um framework utilizado para desenvolver aplicações web e APIs com Node.js."
+            }
+        },
+        {
+            "type": "subtitle",
+            "content": "Utilize os métodos HTTP adequadamente"
+        },
+        {
+            "type": "paragraph",
+            "content": "Cada método HTTP possui uma finalidade. Utilizá-los de maneira consistente facilita a compreensão e a manutenção da API."
+        },
+        {
+            "type": "list",
+            "content": {
+                "ordered": false,
+                "items": [
+                    "GET: consultar recursos.",
+                    "POST: criar recursos.",
+                    "PUT: substituir um recurso existente.",
+                    "PATCH: atualizar parcialmente um recurso.",
+                    "DELETE: remover um recurso."
+                ]
+            }
+        },
+        {
+            "type": "subtitle",
+            "content": "Trate erros de maneira consistente"
+        },
+        {
+            "type": "paragraph",
+            "content": "Uma API deve retornar códigos HTTP apropriados e mensagens que ajudem o consumidor a compreender o resultado da requisição. Erros inesperados devem ser registrados no servidor sem expor informações internas sensíveis."
+        },
+        {
+            "type": "quote",
+            "content": {
+                "text": "Uma API bem projetada deve ser previsível para quem a utiliza e fácil de manter para quem a desenvolve.",
+                "author": "Equipe de desenvolvimento"
+            }
+        },
+        {
+            "type": "tip",
+            "content": {
+                "title": "Dica",
+                "text": "Centralize o tratamento de erros no Express quando isso fizer sentido para a arquitetura do projeto. Assim, você reduz a duplicação de código e padroniza as respostas."
+            }
+        },
+        {
+            "type": "warning",
+            "content": {
+                "title": "Segurança",
+                "text": "Nunca exponha senhas, tokens, credenciais de banco de dados ou detalhes internos de exceções nas respostas enviadas aos clientes."
+            }
+        },
+        {
+            "type": "subtitle",
+            "content": "Valide os dados recebidos"
+        },
+        {
+            "type": "paragraph",
+            "content": "Valide parâmetros de rota, query strings e corpos das requisições antes de executar operações no banco de dados. Também utilize consultas parametrizadas para reduzir o risco de injeção de SQL."
+        },
+        {
+            "type": "list",
+            "content": {
+                "ordered": true,
+                "items": [
+                    "Verifique os campos obrigatórios.",
+                    "Valide os tipos e formatos dos dados.",
+                    "Confira os limites de tamanho dos valores recebidos.",
+                    "Utilize consultas parametrizadas.",
+                    "Implemente autenticação e autorização quando necessário."
                 ]
             }
         },
@@ -150,7 +300,9 @@ VALUES (
         },
         {
             "type": "paragraph",
-            "content": "Com essa abordagem, podemos criar artigos com diferentes estruturas sem precisar desenvolver um componente de página exclusivo para cada publicação."
+            "content": "Seguindo essas práticas, você poderá desenvolver APIs mais seguras, organizadas e previsíveis, facilitando sua integração com aplicações frontend e outros serviços."
         }
     ]'::jsonb
 );
+
+
