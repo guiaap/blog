@@ -1,15 +1,40 @@
 CREATE TABLE posts (
 	id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	title VARCHAR(255) NOT NULL,
+    description TEXT,
+    author VARCHAR(255) NOT NULL,
 	body JSONB NOT NULL,
 	created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
+---------------------------------------
+/* 
+Função e gatilho para atualização automática do campo updated_at na tabela
+posts.
+*/
+
+CREATE FUNCTION update_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER posts_updated_at
+BEFORE UPDATE ON posts
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at();
+
+---------------------------------------
+
 -- POST padrão
-INSERT INTO posts (title, body)
+INSERT INTO posts (title, description, author, body)
 VALUES (
     'Introdução ao PostgreSQL',
+    'O PostgreSQL é um poderoso sistema gerenciador de banco de dados relacional, conhecido por sua confiabilidade, extensibilidade e conformidade com padrões SQL.',
+    'Guilherme Pedroso',
     '[
         {
             "type": "lead-paragraph",
